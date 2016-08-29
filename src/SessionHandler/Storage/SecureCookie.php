@@ -105,12 +105,12 @@ class SecureCookie
 
         // Set a cookie with the data
         $ttl = $minutes === null ? 0 : time() + ($minutes * 60);
-        return setcookie($name, base64_encode($value), $ttl, '/', null, null, true);
+        return @setcookie($name, base64_encode($value), $ttl, '/', null, null, true);
     }
 
     public function forget($name)
     {
-        return setcookie($name, '', 1, '/');
+        return @setcookie($name, '', 1, '/');
     }
 
 }
